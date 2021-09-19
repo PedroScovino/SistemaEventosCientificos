@@ -12,30 +12,36 @@ public class VolumeController {
     @Autowired
     private VolumeRepository volumeRepository;
 
-    @GetMapping(path = "/volume/{idVolume}")
-    public ResponseEntity recuperar(@PathVariable("idVolume") Integer idVolume){
-        return volumeRepository.findById(idVolume)
-                .map(record -> ResponseEntity.ok().body(record))
-                .orElse(ResponseEntity.notFound().build());
+    @RequestMapping("/testar")
+    public String testar(){
+        return "criarVolume";
     }
 
-    @GetMapping(path = "/volume/listar")
-    public Iterable<Volume> listar(){
-        return volumeRepository.findAll();
-    }
-
-    @PostMapping(path = "/volume/criar")
-    public Volume criar (@RequestBody Volume volume){
-        return volumeRepository.save(volume);
-    }
-
-    @DeleteMapping(path = "/volume/remover/{idVolume}")
-    public void remover (@PathVariable("idVolume") Integer idVolume){
-        volumeRepository.deleteById(idVolume);
-    }
-
-    @PutMapping(path = "/volume/atualizar")
-    public Volume atualizar (@RequestBody Volume volume){
-        return volumeRepository.save(volume);
-    }
+//    @GetMapping(path = "/volume/{idVolume}")
+//    public ResponseEntity recuperar(@PathVariable("idVolume") Integer idVolume){
+//        return volumeRepository.findById(idVolume)
+//                .map(record -> ResponseEntity.ok().body(record))
+//                .orElse(ResponseEntity.notFound().build());
+//    }
+//
+//    @GetMapping(path = "/volume/listar")
+//    public Iterable<Volume> listar(){
+//        return volumeRepository.findAll();
+//    }
+//
+//    @PostMapping(path = "/volume/criar")
+//    public String criar (@RequestBody Volume volume){
+//        volumeRepository.save(volume);
+//        return "criarVolume.html";
+//    }
+//
+//    @DeleteMapping(path = "/volume/remover/{idVolume}")
+//    public void remover (@PathVariable("idVolume") Integer idVolume){
+//        volumeRepository.deleteById(idVolume);
+//    }
+//
+//    @PutMapping(path = "/volume/atualizar")
+//    public Volume atualizar (@RequestBody Volume volume){
+//        return volumeRepository.save(volume);
+//    }
 }
